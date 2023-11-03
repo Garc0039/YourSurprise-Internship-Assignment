@@ -1,2 +1,1 @@
-# YourSurprise-Internship-Assignment
-My interpretation of the given internship assignment of the YourSurprise Company 2023-Q4
+# Initial Try to make it work with NodeJS and Json
