@@ -18,8 +18,10 @@ class LikesController extends Controller
         $likedPosts = DB::select("SELECT * FROM `likes` WHERE `user_id` = {$userNumber}");
         $posts = array();
         for($i = 0; $i < count($likedPosts); $i++) {
-            $post = DB::select("SELECT * FROM `blog_posts` WHERE `blog_id` = {$likedPosts[$i]->blog_id}");
-            $posts[] = $post;
+            if ($likedPosts[$i]->like_bool == 1) {
+                $post = DB::select("SELECT * FROM `blog_posts` WHERE `blog_id` = {$likedPosts[$i]->blog_id}");
+                $posts[] = $post;
+            }
         }
         //echo "<script>console.log('" . json_encode($posts[1][0]->post) . "');</script>";
         return view('likes.index', compact('likedPosts', 'posts', 'userNumber'));
